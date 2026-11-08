@@ -1,0 +1,89 @@
+while True:
+    devcost = None
+
+    clientsname = input("Whats Your Name:")
+    garmentname = input("Whats The Garment Name:")
+
+    ##### Fabric Quantity Code Loop #####
+    while True:
+        fabricquantity = input("How Much Fabric Does This Need:")
+        try:
+            fabricquantity = float(fabricquantity)
+            break
+        except:
+            print("Invalid Input,Please Enter A Valid Number")
+            continue
+
+    ## Fabric Cost Code Loop ##
+    while True:
+        fabricquantitypm = input("Fabric Cost Per Metre:")
+        try:
+            fabricquantitypm = float(fabricquantitypm)
+            break
+        except:
+            print("Invalid Input,Please Enter A Valid Number")
+            continue
+
+    ## Labour Hours Needed ##
+    while True:
+        labourhours = input("What Are The Labour Hours Needed:")
+        try:
+            labourhours = float(labourhours)
+            break
+        except:
+            print("Invalid Input,Please Enter A Valid Number")
+            continue
+
+    ## Labour Hours Cost ##
+    while True:
+        labourhoursph = input("How Much Is The Labour Per Hour:")
+        try:
+            labourhoursph = float(labourhoursph)
+            break
+        except:
+            print("Invalid Input,Please Enter A Valid Number")
+            continue
+
+    ## Additional Material Costs ##
+    while True:
+        addco = input(f"{clientsname},Any Additional Costs:")
+        try:
+            addco = float(addco)
+            break
+        except:
+            print("Invalid Input,Please Enter A Valid Number")
+            continue
+
+    ## Calculating Total Fabric Cost ##
+    def totalfabriccost(fabricquantity, fabricquantitypm):
+        totalfabriccost = fabricquantity * fabricquantitypm
+        return totalfabriccost
+
+    ## Calculating Total Labour Cost ##
+    def totallabourcost(labourhours, labourhoursph):
+        totallabourcost = labourhours * labourhoursph
+        return totallabourcost
+
+    ## Calculating Total Cost ##
+    totalcost = totalfabriccost(fabricquantity, fabricquantitypm) + totallabourcost(labourhours, labourhoursph) + addco
+
+    ## Dev Cost Classification ##
+    if totalcost < 500:
+        devcost = "Low Cost Development"
+    elif totalcost <= 1500:
+        devcost = "Medium Cost Development"
+    else:
+        devcost = "High Cost Development"
+
+    print(clientsname, garmentname, "R", totalcost, devcost)
+
+    redev = input("Would You Like To Develop Another? ")
+
+    if redev == "Yes":
+        continue
+    elif redev == "No":
+        print("Goodbye!")
+        break
+
+    
+
